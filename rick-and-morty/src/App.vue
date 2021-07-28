@@ -1,14 +1,16 @@
 <template>
-  <SearchBar/>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
 </template>
 
-<script>
-import SearchBar from './components/SearchBar/SearchBar.vue'
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+import HelloWorld from './components/HelloWorld.vue';
 
-export default {
-  name: 'App',
+@Options({
   components: {
-    SearchBar
-  }
-}
+    HelloWorld,
+  },
+})
+export default class App extends Vue {}
 </script>
