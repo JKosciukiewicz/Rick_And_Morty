@@ -9,6 +9,9 @@ query allCharacters{
         species,
         gender,
         image,
-      }
+        episode {
+          episode,
+        }
+    }
   }
 }

@@ -1,0 +1,19 @@
+.characterList__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.characterList__list{
+    list-style: none;
+}
+.characterList__list__element{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 76px;
+}
+.characterList__list__element img{
+    width: 43px;
+    height: 68px;
+    object-fit:fill
+}
