@@ -4,13 +4,17 @@
 </template>
 
 <script lang="ts">
+import { useQuery } from '@vue/apollo-composable';
 import { defineComponent } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
-
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
+  },
+  setup(){
+    const allCharacters=require('./graphql/characters.query.gql')
+    const {result}=useQuery(allCharacters)
   }
 });
 </script>

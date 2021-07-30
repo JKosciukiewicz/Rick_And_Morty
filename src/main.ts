@@ -1,39 +1,14 @@
-import { createApp } from 'vue'
+import { createApp, provide, render,h } from 'vue'
 import App from './App.vue'
-import { ApolloClient, createHttpLink, InMemoryCache, gql } from '@apollo/client/core'
+import apolloClient from './apollo/apollo'
+import { DefaultApolloClient } from '@vue/apollo-composable'
 
-// HTTP connection to the API
-const httpLink = createHttpLink({
-    // You should use an absolute URL here
-    uri: 'https://rickandmortyapi.com/graphql',
-  })
-  
-  // Cache implementation
-  const cache = new InMemoryCache()
 
-  const query=gql`
-        query {
-        characters(page: 1, filter: { name: "rick" }) {
-            info {
-            count
-            }
-            results {
-            name,
-            species,
-            gender,
-            }
-        }
-    }
-  `
-  
-  // Create the apollo client
-  const apolloClient = new ApolloClient({
-    link: httpLink,
-    cache,
-  })
-
-  apolloClient.query({
-      query
-  }).then(res=>console.log(res))
-
-createApp(App).mount('#app')
+createApp({
+  setup(){
+    provide(DefaultApolloClient, apolloClient)
+  },
+  render(){
+    return h(App)
+  }
+}).mount('#app')
