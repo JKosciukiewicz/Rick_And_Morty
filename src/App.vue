@@ -1,21 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <CharacterTable/>
 </template>
 
 <script lang="ts">
-import { useQuery } from '@vue/apollo-composable';
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import CharacterTable from './components/CharacterTable.vue'
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    CharacterTable
   },
-  setup(){
-    const allCharacters=require('./graphql/characters.query.gql')
-    const {result}=useQuery(allCharacters)
-  }
 });
 </script>
 

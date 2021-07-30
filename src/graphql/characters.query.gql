@@ -1,12 +1,14 @@
 query allCharacters{
-  characters(page: 1, filter: { name: "rick" }) {
-    info {
-      count
-    }
-    results {
-      name,
-      species,
-      gender,
-    }
+  characters(page: 1) {
+      info {
+        count
+      }
+      results {
+        id,
+        name,
+        species,
+        gender,
+        image,
+      }
   }
 }

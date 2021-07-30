@@ -2,7 +2,6 @@ import { ApolloClient, createHttpLink, InMemoryCache, gql } from '@apollo/client
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
-    // You should use an absolute URL here
     uri: 'https://rickandmortyapi.com/graphql',
   })
   
@@ -10,17 +9,19 @@ const httpLink = createHttpLink({
   const cache = new InMemoryCache()
 
   const query=gql`
-        query {
-        characters(page: 1, filter: { name: "rick" }) {
-            info {
-            count
-            }
-            results {
-            name,
-            species,
-            gender,
-            }
+    query {
+      characters{
+        info {
+          count
         }
+        results {
+          id,
+          name,
+          species,
+          gender,
+          image,    
+        }
+      }
     }
   `
   
@@ -32,6 +33,6 @@ const httpLink = createHttpLink({
 
   apolloClient.query({
       query
-  }).then(res=>console.log(res))
+  })
 
   export default apolloClient
