@@ -2,6 +2,7 @@ import { createApp, provide, render,h } from 'vue'
 import App from './App.vue'
 import apolloClient from './apollo/apollo'
 import { DefaultApolloClient } from '@vue/apollo-composable'
+import store from './store'
 
 
 createApp({
@@ -11,4 +12,4 @@ createApp({
   render(){
     return h(App)
   }
-}).mount('#app')
+}).use(store).mount('#app')
