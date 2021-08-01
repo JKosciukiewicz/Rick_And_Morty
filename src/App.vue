@@ -1,5 +1,7 @@
 <template>
-  <CharacterTable/>
+  <div>
+    <CharacterTable/>
+  </div>
 </template>
 
 <script lang="ts">
