@@ -1,7 +1,8 @@
-query allCharacters{
+query allCharacter{
   characters(page: 1) {
       info {
-        count
+        count,
+        pages
       }
       results {
         id,
