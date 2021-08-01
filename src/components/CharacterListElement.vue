@@ -6,7 +6,11 @@
       <p>{{species}}</p>
       <p>{{gender}}</p>
       <p>{{lastEpisode}}</p>
+<<<<<<< HEAD
       <p v-on:click="toggleFavorite">Add to Favorite</p>
+=======
+      <p @click="toggleFavortie">Add to Favorite</p>
+>>>>>>> f884c40f836496b1cd2efd0ae09333a218ef8ca4
   </div>
 </template>
 
@@ -26,6 +30,7 @@ export default defineComponent({
   },
   methods:{
     toggleFavorite(){
+<<<<<<< HEAD
       if(this.isFavorite){
         let favoriteList:String[] =this.$store.state.favoriteCharacters;
         let filteredList:String[]=favoriteList.filter(element=>element!==this.id)
@@ -46,6 +51,14 @@ export default defineComponent({
           }
       });
       return isFavorite
+=======
+        console.log('favorite')
+    },
+  },
+  computed:{
+    isFavorite():[Number]{
+      return this.$store.state.favoriteCharacters;
+>>>>>>> f884c40f836496b1cd2efd0ae09333a218ef8ca4
     }
   }
 
