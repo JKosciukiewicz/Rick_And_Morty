@@ -1,9 +1,7 @@
 <template>
   <div class="characterTable">
-      <div class="optionsMenu">
-        <button class="characterTable__optionsMenu__button" @click="displayAll">All Characters</button>
-        <button class="characterTable__optionsMenu__button" @click="displayFavorites">Favorites</button>
-      </div>
+      <div class="optionsMenu"></div>
+      <h1>{{filterCharacters}}</h1>
       <div class="characterList">
         <div class="characterList__header">
           <p>Photo</p>
@@ -14,14 +12,14 @@
           <p>Last Episode</p>
           <p>Add To Favorite</p>
         </div>
-          <ul v-if="displayModeAll==='true'" class="characterList__list">
-              <li v-for="character in characters" :key="character" class="characterList__list__element">
-                <CharacterListElement :id="character.id" :name="character.name" :species="character.species" :gender="character.gender" :lastEpisode="character.episode[character.episode.length -1].episode" :imageUrl="character.image"/>
+          <ul class="characterList__list">
+              <li v-for="character in filteredCharacters" :key="character" class="characterList__list__element">
+                 <CharacterListElement :id="character.id" :name="character.name" :species="character.species" :gender="character.gender" :lastEpisode="character.episode[character.episode.length -1].episode" :imageUrl="character.image"/>
               </li>
           </ul>
       </div>
       <div class="paginationControls">
-        <p>{{pages}}</p>
+
       </div>
   </div>
 </template>
@@ -33,28 +31,45 @@ import CharacterListElement from './CharacterListElement.vue'
 
 export default defineComponent({
   name: 'CharacterTable',
-  components:{
+    components:{
     CharacterListElement,
   },
   setup(){
     const allCharacters=require('../graphql/characters.query.gql')
     const {result}=useQuery(allCharacters)
     const characters=useResult(result, null, data=>data.characters.results)
-    const pages=useResult(result, null,data=>data.characters.info.pages)
     console.log(characters)
-    return {characters,pages}
+    return {characters}
   },
-  data() {
-    return {
-       displayModeAll:'true'
+  computed:{
+    getQuery():String{
+      return this.$store.state.query
+    },
+    filteredCharacters():any{
+      let searchQuery=this.$store.state.query
+
+      if(this.characters){
+          if(searchQuery.length>1){
+            console.log(searchQuery)
+            let filteredCharacters=this.characters.filter(this.filterBySearch)
+            console.log(filteredCharacters)
+            return filteredCharacters
+          }
+          else{
+            return this.characters
+          }
+      }
+      else{
+        console.log('empty')
+        return {};
+      }
     }
   },
   methods:{
-    displayAll(){
-      this.displayModeAll='true'
-    },
-    displayFavorites(){
-      this.displayModeAll='false'
+    filterBySearch(character:any){
+      let searchQuery=this.getQuery.toLowerCase()
+      let firstAndLastName=character.name.toLowerCase()
+      return firstAndLastName.includes(searchQuery)
     }
   }
 });

@@ -1,13 +1,18 @@
 <template>
-  <CharacterTable/>
+  <div>
+    <SearchBar/>
+    <CharacterTable/>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CharacterTable from './components/CharacterTable.vue'
+import SearchBar from './components/SearchBar.vue'
 export default defineComponent({
   name: 'App',
   components: {
+    SearchBar,
     CharacterTable
   },
 });
