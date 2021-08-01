@@ -7,14 +7,10 @@
     list-style: none;
 }
 .characterList__list__element{
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     height: 76px;
-}
-.characterList__list__element p{
-   width: 200px;
 }
 .characterList__list__element img{
     width: 43px;
