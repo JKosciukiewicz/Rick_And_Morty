@@ -2,8 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    query:String,
-    favoriteCharacters:[String]
+    favoriteCharacters:[Number],
   },
   mutations: {
   },
