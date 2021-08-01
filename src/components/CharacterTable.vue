@@ -2,6 +2,10 @@
   <div class="characterTable">
       <div class="optionsMenu"></div>
       <h1>{{filterCharacters}}</h1>
+      <div class="characterTable_displaySelector_wrapper">
+        <button class="characterTable_displaySelector" v-on:click="selectAll">All </button>
+        <button class="characterTable_displaySelector" v-on:click="selectFavorite">Favorite</button>
+      </div>
       <div class="characterList">
         <div class="characterList__header">
           <p>Photo</p>
@@ -12,8 +16,13 @@
           <p>Last Episode</p>
           <p>Add To Favorite</p>
         </div>
-          <ul class="characterList__list">
+          <ul class="characterList__list" v-if="displayAll===true">
               <li v-for="character in filteredCharacters" :key="character" class="characterList__list__element">
+                 <CharacterListElement :id="character.id" :name="character.name" :species="character.species" :gender="character.gender" :lastEpisode="character.episode[character.episode.length -1].episode" :imageUrl="character.image"/>
+              </li>
+          </ul>
+          <ul class="characterList__list" v-else>
+              <li v-for="character in favortiteCharacters" :key="character" class="characterList__list__element">
                  <CharacterListElement :id="character.id" :name="character.name" :species="character.species" :gender="character.gender" :lastEpisode="character.episode[character.episode.length -1].episode" :imageUrl="character.image"/>
               </li>
           </ul>
@@ -41,6 +50,11 @@ export default defineComponent({
     console.log(characters)
     return {characters}
   },
+    data: function () {
+    return {
+      displayAll:true,
+    }
+  },
   computed:{
     getQuery():String{
       return this.$store.state.query
@@ -63,6 +77,18 @@ export default defineComponent({
         console.log('empty')
         return {};
       }
+    },
+    favortiteCharacters():any{
+      let characterList:any[]=this.filteredCharacters;
+      let favortiteCharactersList=this.$store.state.favoriteCharacters
+      let outputList:any[]=[]
+      characterList.forEach(character => {
+          if(favortiteCharactersList.includes(character.id)){
+            outputList.push(character)
+          }
+      });
+      console.log(outputList)
+      return outputList;
     }
   },
   methods:{
@@ -70,7 +96,13 @@ export default defineComponent({
       let searchQuery=this.getQuery.toLowerCase()
       let firstAndLastName=character.name.toLowerCase()
       return firstAndLastName.includes(searchQuery)
-    }
+    },
+    selectAll(){
+      this.displayAll=true
+    },
+    selectFavorite(){
+      this.displayAll=false
+    },
   }
 });
 </script>

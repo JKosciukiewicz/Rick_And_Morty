@@ -30,6 +30,7 @@ export default defineComponent({
         let favoriteList:String[] =this.$store.state.favoriteCharacters;
         let filteredList:String[]=favoriteList.filter(element=>element!==this.id)
         this.$store.state.favoriteCharacters=filteredList
+        console.log(this.$store.state.favoriteCharacters)
       }
       else{
         this.$store.state.favoriteCharacters.push(this.id)
