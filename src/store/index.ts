@@ -1,15 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { InjectionKey } from 'vue'
+import { createStore, Store } from 'vuex'
 
-Vue.use(Vuex)
+// define your typings for the store state
+export interface State {
+  count: number
+}
 
-export default new Vuex.Store({
+// define injection key
+export const key: InjectionKey<Store<State>> = Symbol()
+
+export const store = createStore<State>({
   state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
+    count: 0
   }
 })
