@@ -1,0 +1,18 @@
+query allCharacter{
+  characters(page: 1) {
+      info {
+        count,
+        pages
+      }
+      results {
+        id,
+        name,
+        species,
+        gender,
+        image,
+        episode {
+          episode,
+        }
+    }
+  }
+}
