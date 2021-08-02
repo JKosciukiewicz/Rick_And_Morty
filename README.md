@@ -1,19 +1,4 @@
 # dc-fe-jakub-kosciukiewicz
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+LIVE DEMO ON NETLIFY
+https://determined-lamarr-bd9a46.netlify.app/
