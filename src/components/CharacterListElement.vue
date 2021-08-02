@@ -1,6 +1,8 @@
 <template>
-  <div class="characterList__list__element">
-      <img :src=imageUrl>
+  <div class="characterList__list__element__wrapper">
+      <div class="imageWapper">
+        <img :src=imageUrl>
+      </div>
       <p>{{id}}</p>
       <p>{{name}}</p>
       <p>{{species}}</p>

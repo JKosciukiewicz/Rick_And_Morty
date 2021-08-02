@@ -2,8 +2,8 @@
   <div class="characterTable">
       <div class="optionsMenu"></div>
       <div class="characterTable_displaySelector_wrapper">
-        <button class="characterTable_displaySelector active" v-on:click="selectAll">All Characters</button>
-        <button class="characterTable_displaySelector" v-on:click="selectFavorite">Favorites</button>
+        <button class="characterTable_displaySelector" v-bind:class="{ active: displayAll }" v-on:click="selectAll">All Characters</button>
+        <button class="characterTable_displaySelector" v-bind:class="{ active: !displayAll }" v-on:click="selectFavorite">Favorites</button>
       </div>
       <div class="characterList">
         <div class="characterList__header">
@@ -12,7 +12,7 @@
           <p>Name</p>
           <p>Species</p>
           <p>Gender</p>
-          <p>Last Episode</p>
+          <p>Last Episode</p> 
           <p>Add To Favorite</p>
         </div>
           <ul class="characterList__list" v-if="displayAll===true">
