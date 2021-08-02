@@ -21,3 +21,65 @@
     height: 68px;
     object-fit:fill
 }
+.searchBar__Container{
+    border-bottom: 2px solid #E5EAF4;
+    display: flex;
+    align-items: center;
+}
+.searchBar__Title{
+    width: 240px;
+    height: 70px;
+}
+.searchBar__Input{
+    width: 505px;
+    height: 56px;
+    border: 1px solid #A9B1BD;
+    border-radius: 15px;
+    line-height: 150%;
+    font-family: 'Poppins', sans-serif;
+}
+.searchBar__Input:focus-visible{
+    outline: none;
+}
+.characterTable_displaySelector_wrapper{
+    height: 55px;
+    display: flex;
+}
+.characterTable_displaySelector_wrapper{
+    width: 270px;
+    display: flex;
+    justify-content: space-between;
+}
+.characterTable_displaySelector{
+    height: 30px;
+    width: fit-content;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 150%;
+    font-family: 'Poppins', sans-serif;
+    color: #11B0C8;
+}
+.characterTable_displaySelector.active{
+    border-bottom: 3px solid #11B0C8;
+}
+.characterList__list__element__genderWrapper{
+    display: flex;
+}
+.toggleFavorite{
+    cursor: pointer;
+    color:#11B0C8;
+    width: 39px;
+    height:39px;
+    border: 2px solid #11B0C8;
+    border-radius:8px;
+}
+.toggleFavorite.active{
+    cursor: pointer;
+    background-color:#11B0C8;
+    color: white;
+    width: 39px;
+    height:39px;
+    border: 2px solid #11B0C8;
+    border-radius:8px;
+}

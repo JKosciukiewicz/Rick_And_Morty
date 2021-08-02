@@ -1,10 +1,9 @@
 <template>
   <div class="characterTable">
       <div class="optionsMenu"></div>
-      <h1>{{filterCharacters}}</h1>
       <div class="characterTable_displaySelector_wrapper">
-        <button class="characterTable_displaySelector" v-on:click="selectAll">All </button>
-        <button class="characterTable_displaySelector" v-on:click="selectFavorite">Favorite</button>
+        <button class="characterTable_displaySelector active" v-on:click="selectAll">All Characters</button>
+        <button class="characterTable_displaySelector" v-on:click="selectFavorite">Favorites</button>
       </div>
       <div class="characterList">
         <div class="characterList__header">

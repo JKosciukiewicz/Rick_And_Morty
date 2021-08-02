@@ -4,9 +4,25 @@
       <p>{{id}}</p>
       <p>{{name}}</p>
       <p>{{species}}</p>
-      <p>{{gender}}</p>
+      <div class="characterList__list__element__genderWrapper">
+        <span v-if="gender==='Male'" class="material-icons">
+          male
+        </span>
+        <span v-else-if="gender==='Female'" class="material-icons">
+          female
+        </span>
+        <span v-else-if="gender==='unknown'" class="material-icons">
+          remove
+        </span>
+        <span v-else-if="gender==='Genderless'">
+          clear
+        </span>
+        <p>{{gender}}</p>
+      </div>
       <p>{{lastEpisode}}</p>
-      <p v-on:click="toggleFavorite">Add to Favorite</p>
+      <span v-on:click="toggleFavorite" class="material-icons toggleFavorite" v-bind:class="{ active: isFavorite }">
+        star
+      </span>
   </div>
 </template>
 

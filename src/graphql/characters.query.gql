@@ -9,6 +9,7 @@ query allCharacter{
         name,
         species,
         gender,
+        status,
         image,
         episode {
           episode,
